@@ -1,6 +1,3 @@
-﻿h2, h3{color:navy;}
-p{font-size:13px;}
-:host {
-  font-family: Verdana;
-  color: #555;
+﻿h2, p {
+  color:#333;
 }
