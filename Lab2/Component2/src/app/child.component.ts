@@ -1,8 +1,11 @@
-﻿import { Input, Component} from '@angular/core';
+﻿import { Component, EventEmitter, Input, Output} from '@angular/core';
 @Component({
     selector: 'child-comp',
-    template: `<p>Ім’я користувача: {{userName}}</p>
-    <p>Вік користувача: {{userAge}}</p>`
+    template: `
+        <p>Ім’я користувача: {{userName}}</p>
+        <p>Вік користувача: {{userAge}}</p>
+        <button (click)="change(true)">+</button>
+        <button (click)="change(false)">-</button>`
 })
 export class ChildComponent{
     @Input() userName: string = "";
@@ -17,4 +20,8 @@ export class ChildComponent{
             this._userAge = age;
     }
     get userAge() { return this._userAge; }
+    @Output() onChanged = new EventEmitter<boolean>();
+    change(increased:any) {
+        this.onChanged.emit(increased);
+    }
 }
